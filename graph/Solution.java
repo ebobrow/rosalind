@@ -1,17 +1,4 @@
-public static void graph(String in) {
-    boolean skipFirst = true;
-    HashMap<String, String> dnas = new HashMap<>();
-    for (String item : in.split(">")) {
-        if (skipFirst) {
-            skipFirst = false;
-            continue;
-        }
-        String dna;
-        int firstReturn = item.indexOf('\n') + 1;
-        dna = item.substring(firstReturn, item.length() - 1);
-        String name = item.substring(0, item.indexOf("\n"));
-        dnas.put(name, dna);
-    }
+public static void graph(HashMap<String, String> dnas) {
     for (Map.Entry<String, String> entry : dnas.entrySet()) {
         String name = entry.getKey();
         String dna = entry.getValue();
