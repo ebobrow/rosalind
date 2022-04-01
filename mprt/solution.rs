@@ -24,10 +24,8 @@ async fn mprt(ids: Vec<&str>) -> Result<(), Box<dyn Error>> {
                 if &contents[i + 1..i + 2] != "P" {
                     if &contents[i + 2..i + 3] == "S" || &contents[i + 2..i + 3] == "T" {
                         if &contents[i + 3..i + 4] != "P" {
-                            // occurrences.push((id, i));
                             let arr = occurrences.entry(id).or_default();
                             arr.push(i + 1);
-                            // println!("{}", &contents[i..i + 4]);
                         }
                     }
                 }
