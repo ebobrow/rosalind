@@ -1,3 +1,6 @@
+use num_bigint::BigUint;
+
+#[derive(Debug)]
 pub struct Dna {
     pub name: String,
     pub contents: String,
@@ -9,9 +12,9 @@ where
 {
     fn from(s: T) -> Self {
         let s = s.to_string();
-        let (name, contents) = s.split_once("\n").unwrap();
+        let (name, contents) = s.split_once('\n').unwrap();
         let name = name.to_string();
-        let contents = contents.to_string().replace("\n", "");
+        let contents = contents.to_string().replace('\n', "");
         Self { name, contents }
     }
 }
@@ -25,4 +28,9 @@ impl Dna {
             .map(Dna::from)
             .collect()
     }
+}
+
+pub fn choose(n: usize, k: usize) -> BigUint {
+    (1..=n).product::<BigUint>()
+        / ((1..=k).product::<BigUint>() * (1..=(n - k)).product::<BigUint>())
 }
